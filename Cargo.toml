@@ -1,0 +1,6 @@
+[package]
+name = "dropbox-client"
+version = "0.1.0"
+authors = ["murphyj"]
+
+[dependencies]
