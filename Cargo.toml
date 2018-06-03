@@ -1,6 +1,8 @@
 [package]
-name = "dropbox-client"
+name = "spacebox"
 version = "0.1.0"
-authors = ["murphyj"]
+authors = ["Joseph Murphy <air.jmurph@gmail.com>"]
+license = "MIT"
+description = "A community-driven Dropbox client"
 
 [dependencies]
