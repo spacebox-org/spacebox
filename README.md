@@ -1,30 +1,41 @@
 # A FOSS Dropbox client
+## Motivation
+I realized recently that Dropbox has an open enough API to allow outside developers to create fully featured
+sync clients that are potentially better than the official ones.  There were a couple of really desireable
+features that Dropbox hasn't implemented over the years, so I see no reason we can't do it.
 ## Purpose
-This project is motivated mainly by my realization that new Dropbox features could be implemented client-side
-without the need for Dropbox the company to get around to it.  The killer feature I needed is support for a
-.dropboxignore file that could dynamically exclude files from being synced.  This is a must for developers who
-have build artifacts that are hundreds if not thousands of times larger than their source code.  Thus I want
-to explore what this looks like if we were to design a client (probably in Rust, to be honest) that is
-community-driven and has advanced features to squeeze every last bit of functionality out of the platform
-that we can.
+This project will provide a community-driven, fully-featured Dropbox client for Linux (initially) and
+potentially other platforms.
+
+## Key Features
+* New features beyond official
+	* .dropboxignore support
+* Standard sync client features
+	* Selective sync
+	* Sync-on-change
+	* Dropbox folder relocation
+	* Either personal and business accounts
+	* HTTP Proxies
+	* Autostart
+There are some standard client features that have more dubious value such as LAN sync and bandwidth
+limits, so some consideration will have to be made before spending the time to implemenet those.
+
+* Some side perks that I hope to realize
+	* Significantly lower memory usage
+	* Reduced hard drive writes
+
+* Potential further features that could be added
+	* Symbolic link support
 
 ## Design
-* Bindings to REST API
-	* The actual business of serializing and deserializing for the API will be handled in its own module
-	to separate concerns, since there is no official SDK for Rust.
-* Option #1
-	* Separate essentially all functionality into four separate domains:
-	* Filesystem monitoring - watch the filesystem for changes and open files
-	* Remote monitoring - watch the Dropbox folder for changes
-	* Change handlers - Given a certain type of change detected, execute the necessary sync operations
-	* Settings window / handler
-* Option #2
-	* Integrate the change handlers into the two other main subsystems
-	* Local handler - watch the local filesystem, and execute a sync if needed
-	* Remote handler - watch the remote filesystem, and write to disk if neededA
-	* Settings window / handler
-* I like Option #1 better because it allows one to implement more complex behaviors (like my ignore behavior)
-in the middle layer, abstracted away from all of the nitty-gritty of either side.
-* On the downside, Option #1 likely leads to a decent bit more code for not much immediate benefit.  Things like
-ignoring files could be done just on the filesystem side of Option #2 just fine.  It would just likely be more
-integrated into the filesystem monitoring.
+* Rust Dropbox SDK
+	* Developed in adjacent repositories
+* File system monitoring
+	* Responsible for tracking when a file changes
+* Change handlers
+	* Make decisions about how to map events in the file 
+	system layer to actions in the Dropbox interfacing layer.
+* Dropbox monitoring and interface
+	* Responsible for sending and receiving things from Dropbox
+	* Uses the Rust Dropbox SDK mentioned above
+* This structure allows each layer to be tested relatively independently, so that is a plus.
