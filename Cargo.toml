@@ -6,3 +6,4 @@ license = "MIT"
 description = "A community-driven Dropbox client"
 
 [dependencies]
+sha3 = "0.7.3"
