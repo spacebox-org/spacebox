@@ -12,6 +12,8 @@ pub mod config;
 pub mod error;
 pub use error::{Error, Result};
 
+pub mod backend;
+
 /// The entry point to the daemon.  Runs an event handling loop.
 pub fn main() {
     println!("Hello, world!");

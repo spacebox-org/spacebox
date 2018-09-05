@@ -1,19 +1,24 @@
 use super::{
-    Result
+    Result,
+    StorageBackend
 };
 
+/// A struct representing a backend to store things on Dropbox.
 pub struct DropboxBackend {
 
 }
 
+/// A Dropbox specific authentication token.
 pub struct DropboxAuthToken {
 
 }
 
+/// A Dropbox specific session config.
 pub struct DropboxSessionConfig {
 
 }
 
+#[allow(unused)]
 impl StorageBackend for DropboxBackend {
     type AuthToken = DropboxAuthToken;
     type SessionConfig = DropboxSessionConfig;
@@ -39,6 +44,10 @@ impl StorageBackend for DropboxBackend {
     }
 
     fn get_total_space(&self) -> Result<()> {
+        unimplemented!()
+    }
+
+    fn get_used_space(&self) -> Result<()> {
         unimplemented!()
     }
 }
