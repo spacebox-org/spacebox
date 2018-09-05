@@ -19,7 +19,7 @@ potentially other platforms.
 	* Autostart
 
 There are some standard client features that have more dubious value such as LAN sync and bandwidth
-limits, so some consideration will have to be made before spending the time to implemenet those.
+limits, so some consideration will have to be made before spending the time to implement those.
 
 * Some side perks that I hope to realize
 	* Significantly lower memory usage
