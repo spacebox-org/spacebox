@@ -1,5 +1,17 @@
 # Minimum Viable Product
+* File Sync
+* Ignore files
+* "Selective Sync"
+* Arbitrary Dropbox Folder Location
+* Dropbox OAuth2 Handshake (obviously)
 (TBD, but really important to get documented)
+
+# Generalization
+I've started to structure things such that they are backend generic
+(i.e. we could use something other than Dropbox with an appropriate
+implementation), and that has been an interesting exercise.  I'm not
+quite sure how to feel.  On one hand, it's really pretty to abstract
+everything into traits, but on the other, it's a bit tough to deal with.
 
 # File System Monitoring
 Turns out, there's good-looking, cross-platform crate called `notify`
