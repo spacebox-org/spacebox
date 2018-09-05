@@ -17,6 +17,7 @@ potentially other platforms.
 	* Either personal and business accounts
 	* HTTP Proxies
 	* Autostart
+
 There are some standard client features that have more dubious value such as LAN sync and bandwidth
 limits, so some consideration will have to be made before spending the time to implemenet those.
 
